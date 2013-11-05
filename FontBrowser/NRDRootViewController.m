@@ -8,6 +8,7 @@
 
 #import "NRDRootViewController.h"
 #import "NRDFontDetailViewController.h"
+#import "NRDFontFamily.h"
 
 static NSString *const kTestString = @"How razorback-jumping frogs can level six piqued gymnasts!";
 
@@ -35,12 +36,11 @@ static NSString *const kTestString = @"How razorback-jumping frogs can level six
     NSMutableArray *fonts = [NSMutableArray array];
     
     for (NSString *familyName in [UIFont familyNames]) {
-        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
-            [fonts addObject:fontName];
-        }
+        NRDFontFamily *fontFamily = [[NRDFontFamily alloc] initWithFamilyName:familyName];
+        [fonts addObject:fontFamily];
     }
     [fonts sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [(NSString *)obj1 compare:(NSString *)obj2];
+        return [((NRDFontFamily *)obj1).familyName compare:((NRDFontFamily *)obj2).familyName];
     }];
     
     self.fontList = [NSArray arrayWithArray:fonts];
@@ -56,12 +56,19 @@ static NSString *const kTestString = @"How razorback-jumping frogs can level six
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [self.fontList count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.fontList count];
+    NRDFontFamily *fontFamily = self.fontList[section];
+    return [fontFamily.fontNames count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NRDFontFamily *fontFamily = self.fontList[section];
+    return fontFamily.familyName;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +76,8 @@ static NSString *const kTestString = @"How razorback-jumping frogs can level six
     static NSString *CellIdentifier = @"fontListCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    NSString *fontName = self.fontList[indexPath.row];
+    NRDFontFamily *fontFamily = self.fontList[indexPath.section];
+    NSString *fontName = fontFamily.fontNames[indexPath.row];
     cell.textLabel.font = [UIFont fontWithName:fontName size:16.0f];
     cell.textLabel.text = kTestString;
     cell.detailTextLabel.text = fontName;
@@ -80,7 +88,9 @@ static NSString *const kTestString = @"How razorback-jumping frogs can level six
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     if ([segue.identifier isEqualToString:@"fontDetailSegue"]) {
-        ((NRDFontDetailViewController *)segue.destinationViewController).fontName = self.fontList[indexPath.row];
+        NRDFontFamily *fontFamily = self.fontList[indexPath.section];
+        ((NRDFontDetailViewController *)segue.destinationViewController).fontFamilyName = fontFamily.familyName;
+        ((NRDFontDetailViewController *)segue.destinationViewController).fontName = fontFamily.fontNames[indexPath.row];
     }
 }
 

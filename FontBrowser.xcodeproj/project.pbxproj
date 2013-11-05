@@ -22,6 +22,7 @@
 		7BEBC80818283D2B00FCB459 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BEBC80718283D2B00FCB459 /* Main.storyboard */; };
 		7BEBC80E18283EAE00FCB459 /* NRDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBC80D18283EAE00FCB459 /* NRDRootViewController.m */; };
 		7BEBC8111828434300FCB459 /* NRDFontDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEBC8101828434300FCB459 /* NRDFontDetailViewController.m */; };
+		7BF976B31829996D0028BEF6 /* NRDFontFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF976B21829996D0028BEF6 /* NRDFontFamily.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		7BEBC80D18283EAE00FCB459 /* NRDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDRootViewController.m; sourceTree = "<group>"; };
 		7BEBC80F1828434300FCB459 /* NRDFontDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDFontDetailViewController.h; sourceTree = "<group>"; };
 		7BEBC8101828434300FCB459 /* NRDFontDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDFontDetailViewController.m; sourceTree = "<group>"; };
+		7BF976B11829996D0028BEF6 /* NRDFontFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRDFontFamily.h; sourceTree = "<group>"; };
+		7BF976B21829996D0028BEF6 /* NRDFontFamily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRDFontFamily.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,7 @@
 				7BEBC80D18283EAE00FCB459 /* NRDRootViewController.m */,
 				7BEBC80F1828434300FCB459 /* NRDFontDetailViewController.h */,
 				7BEBC8101828434300FCB459 /* NRDFontDetailViewController.m */,
+				7BF976B0182999490028BEF6 /* Model */,
 			);
 			path = FontBrowser;
 			sourceTree = "<group>";
@@ -155,6 +159,15 @@
 				7BEBC7FA18283B6700FCB459 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7BF976B0182999490028BEF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF976B11829996D0028BEF6 /* NRDFontFamily.h */,
+				7BF976B21829996D0028BEF6 /* NRDFontFamily.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF976B31829996D0028BEF6 /* NRDFontFamily.m in Sources */,
 				7BEBC7E518283B6700FCB459 /* main.m in Sources */,
 				7BEBC8111828434300FCB459 /* NRDFontDetailViewController.m in Sources */,
 				7BEBC80E18283EAE00FCB459 /* NRDRootViewController.m in Sources */,

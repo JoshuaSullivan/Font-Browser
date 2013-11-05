@@ -10,6 +10,7 @@
 
 @interface NRDFontDetailViewController : UIViewController
 
+@property (strong, nonatomic) NSString *fontFamilyName;
 @property (strong, nonatomic) NSString *fontName;
 
 @end

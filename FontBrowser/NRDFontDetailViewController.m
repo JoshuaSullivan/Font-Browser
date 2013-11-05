@@ -40,7 +40,7 @@ static NSString *const kEnumerationString = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
 {
     [super viewWillAppear:animated];
     
-    self.title = self.fontName;
+    self.title = self.fontFamilyName;
     self.titleLabel.text = self.fontName;
     
     self.exampleLabel.font = [UIFont fontWithName:self.fontName size:24.0f];
